@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Api Test tool</title>
+  <style>
+    #TestForm input[type='text']{
+      width: 300px;
+      display: block;
+      margin:5px;
+      height:20px;
+    }
+  </style>
+  <script type='text/javascript' src="lib/jquery.min.js"></script>
+  <script type='text/javascript' src="lib/crypto.js"></script>
+  <script>
+
+  </script>
+<script>
+
+  $(document).ready(function() {
+
+
+    function build_sign_str(parameters){
+      var qs = "";
+      for(var key in parameters) {
+      if (key == '' || key == ' ') {
+        continue;
+      }
+      qs += (key + parameters[key]); 
+      }
+      return qs;
+    }
+
+    /**
+     * Return an Object sorted by it's Key
+     */
+    var sortObjectByKey = function(obj){
+        var keys = [];
+        var sorted_obj = {};
+        for(var key in obj){
+            if(obj.hasOwnProperty(key)){
+                keys.push(key);
+            }
+        }
+        // sort keys
+        keys.sort();
+        // create new array based on Sorted Keys
+        jQuery.each(keys, function(i, key){
+            sorted_obj[key] = obj[key];
+        });
+
+        return sorted_obj;
+    };
+
+
+    form = $('#TestForm')
+    form.on('submit',function(){
+      $('#Time').val(parseInt((new Date()).valueOf()/1000));
+      // get form data
+      var formData = form.serializeArray();
+
+      // convert [{name':'key','value':'value'}..] into [{'key':'value'} ..]
+      var result = {};
+      $.each(formData, function() {
+          result[this.name] = this.value;
+      });
+
+      params = sortObjectByKey(result);             // sort by key
+      
+      var sign_data = build_sign_str(params);
+      console.log(sign_data);
+      sign_data += $("#Key").val();
+      params['_checksum_'] = CryptoJS.MD5(sign_data).toString(); // add checksum
+      console.log(params);
+
+      // append checksum
+      form.append('<input type="hidden" id="Checksum" name="_checksum_"/>');
+      $('#Checksum').val(params['_checksum_']);
+
+      //do the default submit
+    });
+  });
+</script>
+</head>
+
+<body>
+  <form id="TestForm" action="https://www.bifubao.com/merchant-api/order" method="post" >
+    pid&key
+    <br>
+    <input type="text" name="_pid_" placeholder="_pid_"/>
+    <input type="text" id="Key" placeholder="_key_ (Won't be sent, keep it safe)"/>
+    <hr />
+    content
+    <br>
+    <input type="text" name="external_order_id" placeholder="external_order_id"/>
+    <input type="text" name="price_btc" placeholder="price_btc"/>
+    <input type="text" name="price_cny" placeholder="price_cny"/>
+    <input type="text" name="display_name" placeholder="display_name"/>
+    <input type="text" name="display_desc" placeholder="display_desc"/>
+    <input type="text" name="external_info" placeholder="external_info"/>
+    <input type="text" name="external_callback_url" placeholder="external_callback_url"/>
+    <input type="text" name="external_redirect_url" placeholder="external_redirect_url"/>
+    
+    <input type="hidden" id="Time" name="_time_"/>
+    <input type="submit" />
+  </form>
+</body>
+</html>

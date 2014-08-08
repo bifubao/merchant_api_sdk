@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>币付宝商家支付API演示</title>
+  <style>
+    body{
+      text-align: center;
+      background-color: #fafcfa;
+    }
+    .content {
+      text-align: left;
+      margin: 0 auto;
+      width: 900px;
+      border: solid 1px #eee;
+      background: #fff;
+      -webkit-box-shadow: 0 0 9px 0 #E6E6E6;
+      box-shadow: 0 0 9px 0 #E6E6E6;
+    }
+    h1 {
+      color: #888888;
+    }
+    .form_wrap {
+      padding:10px;
+    }
+    #TestForm input[type='text']{
+      width: 870px;
+      display: block;
+      margin:5px 0;
+      height:2em;
+      font-size:0.8em;
+    }
+    #TestForm input[type='submit']{
+      background: #60c465;
+      color: #fff;
+      outline: 0;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: inline-block;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      border: 1px solid transparent;
+      font-size: 0.8em;
+    }
+  </style>
+  <script>
+
+  </script>
+
+</head>
+
+<body>
+
+<h2>币付宝商家支付API演示</h2>
+  <div class="content">
+
+    <div class="form_wrap">
+      <form id="TestForm" action="request.php" method="post" >
+        <!-- 订单信息（注意：price_btc和price_cny只能填写一项） -->
+        <br>
+        
+        必填，商家系统提供的order_id，不能重复
+        <input type="text" name="external_order_id" placeholder="external_order_id"/>
+        <strong>price_btc和price_cny只能填一项</strong>，订单以比特币定价的价格，单位是BTC
+        <input type="text" name="price_btc" placeholder="price_btc"/>
+        <strong>price_btc和price_cny只能填一项</strong>，订单以人民币定价的价格，单位是元，支付时会根据实时汇率折算成比特币支付
+        <input type="text" name="price_cny" placeholder="price_cny"/>
+        必填，订单标题
+        <input type="text" name="display_name" placeholder="display_name"/>
+        可选，订单描述
+        <input type="text" name="display_desc" placeholder="display_desc"/>
+        可选，订单额外信息（不会显示在支付页面内，用于商户向订单添加自定义信息）
+        <input type="text" name="external_info" placeholder="external_info"/>
+        可选，订单完成后通知商户处理业务逻辑的URL，必须在线可访问
+        <input type="text" name="external_callback_url" placeholder="external_callback_url"/>
+        可选，订单完成后引导用户的跳转的URL
+        <input type="text" name="external_redirect_url" placeholder="external_redirect_url"/>
+        <input type="submit" value="提交"  />
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
