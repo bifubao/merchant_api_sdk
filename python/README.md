@@ -1,7 +1,7 @@
-merchant_api_sdk html version
+merchant_api_sdk Python version
 ================
 
-商家接口的python版实现
+商家接口的Python版实现
 
 bifubao.py 主库
 
