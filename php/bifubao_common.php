@@ -51,7 +51,6 @@ function req_make_sign_data($arr=null) {
 function build_bifubao_request_form($params) {
   global $bifubao_config;
 
-  $bifubao_config['merchant_api_url'] = 'https://tc.bifubao.com/merchant-api/order';
   $sHtml = "<form id='bifubaosubmit' name='bifubaosubmit' action='".$bifubao_config['merchant_api_url']."' method='post'>";
   foreach($params as $_k => $_v) {
     $sHtml.= "<input type='hidden' name='".$_k."' value='".htmlspecialchars($_v)."'/>";
