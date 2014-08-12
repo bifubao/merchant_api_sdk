@@ -23,8 +23,8 @@ NzymBH0NuDvyz7fJuTg9Eplnh1blNeCJoG/vv7VLZNKetTMTx+H2X534RUQ4XheX
 
 class bifubao:
     def __init__(self,
-                 pid = "80005557777",
-                 key = "0dab80d90e477ae97c947468fbc8be53"):
+                 pid = "你的Pid",
+                 key = "你的Key"):
             self.key=key;
             self.conf={
               '_pid_'           :   pid,
