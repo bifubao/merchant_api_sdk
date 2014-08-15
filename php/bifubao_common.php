@@ -50,8 +50,18 @@ function req_make_sign_data($arr=null) {
 //
 function build_bifubao_request_form($params) {
   global $bifubao_config;
+  $sHtml = "<!DOCTYPE html>
+<html lang=\"zh-CN\">
+<head>
+  <meta charset=\"UTF-8\">
+  <title>Redirecting...</title>
+  <script>
 
-  $sHtml = "<form id='bifubaosubmit' name='bifubaosubmit' action='".$bifubao_config['merchant_api_url']."' method='post'>";
+  </script>
+
+</head>
+<body>
+  <form id='bifubaosubmit' accept-charset=\"utf-8\" name='bifubaosubmit' action='".$bifubao_config['merchant_api_url']."' method='post'>";
   foreach($params as $_k => $_v) {
     $sHtml.= "<input type='hidden' name='".$_k."' value='".htmlspecialchars($_v)."'/>";
   }
@@ -59,7 +69,8 @@ function build_bifubao_request_form($params) {
   //submit按钮控件请不要含有name属性
   $sHtml = $sHtml."<input type='submit'/></form>";
 
-  $sHtml = $sHtml."<script>document.forms['bifubaosubmit'].submit();</script>";
-
+  $sHtml = $sHtml."<script>document.charset='utf-8';document.forms['bifubaosubmit'].submit();</script>";
+  $sHtml = $sHtml."</body>
+</html>";
   return $sHtml;
 }
