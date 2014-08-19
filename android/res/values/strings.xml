@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BifubaoSDKDemo</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello Bitcoin!</string>
+    <string name="order_info">点击生成订单，订单信息将会显示在这里!</string>
+    <string name="request_order">生成订单</string>
+    <string name="pay">支付订单</string>
+    <string name="redeem">兑换币券</string>
+    <string name="redemption_code">币券</string>
+
+</resources>

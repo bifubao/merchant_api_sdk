@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="bifubao">币付宝</string>
+    <string name="download_bifubao">下载币付宝</string>
+    <string name="upgrade_bifubao">升级币付宝</string>
+    <string name="pay_by_browser">使用浏览器</string>
+    <string name="bifubao_package_not_installed_hint">这台手机上还没有安装币付宝，现在去下载并安装币付宝吗？</string>
+    <string name="bifubao_package_unavaliable_hint">这台手机上安装的币付宝不支持快捷支付，请下载最新安装包升级应用，或者使用浏览器登录币付宝进行操作。</string>
+    <string name="bifubao_package_error_hint">这台手机上安装的币付宝签名有问题，请注意账号安全，卸载应用并到币付宝官网www.bifubao.com下载官方版本。</string>
+
+</resources>

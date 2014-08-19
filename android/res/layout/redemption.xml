@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip"
+        android:text="H1L2-3YYL-EGG9-MOGW"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/by_sdk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/redeem" />
+
+</LinearLayout>
