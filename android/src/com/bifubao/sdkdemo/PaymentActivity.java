@@ -26,6 +26,8 @@ import com.dearcoin.wallet.sdk.api.app.Payment;
 public class PaymentActivity extends BaseActivity implements OnClickListener {
     private String orderHashId;
 
+    private String priceBtc = "0.0001";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,11 @@ public class PaymentActivity extends BaseActivity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.request_order:
+                TextView t = (TextView) findViewById(R.id.price_btc);
+                priceBtc = t.getText().toString();
+                if (TextUtils.isEmpty(priceBtc)) {
+                    priceBtc = "0.0001";
+                }
                 requestOrder();
                 return;
             case R.id.pay:
@@ -98,7 +105,7 @@ public class PaymentActivity extends BaseActivity implements OnClickListener {
             OrderHelper helper = new OrderHelper(pid, key);
             // 必填，商家系统提供的order_id，不能重复
             helper.setOrderId(String.valueOf(System.currentTimeMillis()));
-            helper.setPriceBtc("0.01");
+            helper.setPriceBtc(priceBtc);
             // 订单以人民币定价的价格，单位是元，支付时会根据实时汇率折算成比特币支付,price_btc和price_cny二者只能选择其一
             // api.setPriceCny("1");
             // 必填，订单标题

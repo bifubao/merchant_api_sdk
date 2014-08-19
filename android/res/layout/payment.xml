@@ -8,6 +8,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
+        <EditText
+            android:id="@+id/price_btc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Price BTC"
+            android:inputType="numberDecimal"
+            android:padding="10dip"
+            android:text="0.0001"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/request_order"
             android:layout_width="match_parent"
